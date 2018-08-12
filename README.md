@@ -60,6 +60,7 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
    + removed spaces and comments from html
    + resized pizzeria.jpg to compress quality
 2. related to CRP
+   + Minified css made inline
    + added async to external js
    + removed google fonts
    + moved all js to bootm of body
