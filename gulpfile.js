@@ -4,6 +4,7 @@ const uglify = require('gulp-uglify');
 const csso = require('gulp-csso');
 const htmlmin = require('gulp-htmlmin');
 const del = require('del');
+const deploy = require('gulp-gh-pages');
 
 /*
   --TOP Level Functions ---
@@ -13,9 +14,13 @@ const del = require('del');
     gulp.watch - watch files and folders for changes
 */
 
+// To deploy Dist folder on GitHub
+gulp.task('deploy', function() {
+  gulp.src('dist/**/*')
+    .pipe(deploy());
+})
 
-
-// Copy all HTML files from root of source to root of dist folder
+// Minify all HTML files in src folder
 gulp.task('minifySrc', function() {
   gulp.src('src/*.html')
     .pipe(htmlmin({
@@ -63,7 +68,7 @@ gulp.task('minifyViewsJs', function() {
     .pipe(gulp.dest('dist/views/js'));
 });
 
-// Minify Css in root
+// Minify Css in src
 gulp.task('minifySrcCss', function() {
   gulp.src('src/css/*.css')
     .pipe(csso())
