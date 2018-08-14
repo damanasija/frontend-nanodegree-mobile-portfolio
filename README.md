@@ -54,13 +54,26 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 * <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
 * <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
 
-## Optimization Steps
-1. General Optimizations
-   + Minified css
-   + removed spaces and comments from html
-   + resized pizzeria.jpg to compress quality
-2. related to CRP
-   + Minified css made inline
+## Steps to build the dist folder
+* Note - I've automated all minifying with the help of gulp.
+0. Pre-requisites: make sure you have `gulp` and `npm` installed on the machine.
+1. When in the root of the project, open a terminal window.
+2. In the terminal, run `npm install`.
+3. To make sure you don't have any dist folder prior to the build, run `gulp clean` in the terminal.
+4. Run `gulp default`. This will make the dist folder which contains all the processed code with optimizations like minifying, optimizing images etc.
+5. Optional - `gulp deploy` deploys the dist folder on the `gh-pages` branch of this project's repository. It does require making a new orphan branch and removing all code from the newly created branch and then pushing changes to GitHub.
+
+## Optimizations
+1. General Optimization (Mostly automated by gulp)
+   + Minified css, html and js
+   + resized pizzeria.jpg to optimize quality
+2. Related to CRP
+   + Minified css made inline for better optimization score
    + added async to external js
    + removed google fonts
-   + moved all js to bootm of body
+   + moved all js to bottom of body
+3. 60 FPS animations in Main.js
+   + Prevented default scroll and made custom function to animate scroll
+   + Local functions made global
+   + used translate3d
+   + Avoiding recalculations and moved dom queries out of loop in certain areas

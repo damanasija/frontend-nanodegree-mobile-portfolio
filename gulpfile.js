@@ -16,13 +16,13 @@ const deploy = require('gulp-gh-pages');
 
 // To deploy Dist folder on GitHub
 gulp.task('deploy', function() {
-  gulp.src('dist/**/*')
+  return gulp.src('./dist/**/*')
     .pipe(deploy());
 })
 
 // Minify all HTML files in src folder
 gulp.task('minifySrc', function() {
-  gulp.src('src/*.html')
+  return gulp.src('src/*.html')
     .pipe(htmlmin({
       collapseWhitespace: true,
       removeComments: true,
@@ -32,7 +32,7 @@ gulp.task('minifySrc', function() {
 
 // Minify Html files in views to dist/views folder
 gulp.task('minifyViews', function() {
-  gulp.src('src/views/*.html')
+  return gulp.src('src/views/*.html')
   .pipe(htmlmin({
     collapseWhitespace: true,
     removeComments: true,
@@ -42,49 +42,49 @@ gulp.task('minifyViews', function() {
 
 // Optimize images in src
 gulp.task('imageminSrc', function() {
-  gulp.src('src/img/*')
+  return gulp.src('src/img/*')
     .pipe(imagemin())
     .pipe(gulp.dest('dist/img'));
 });
 
 // Optimize images in src/views
 gulp.task('imageminViews', function() {
-  gulp.src('src/views/images/*')
+  return gulp.src('src/views/images/*')
     .pipe(imagemin())
     .pipe(gulp.dest('dist/views/images'));
 });
 
 // Minify Js in src
 gulp.task('minifySrcJs', function() {
-  gulp.src('src/js/*.js')
+  return gulp.src('src/js/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'));
 });
 
 // Minify JS in src/views
 gulp.task('minifyViewsJs', function() {
-  gulp.src('src/views/js/*.js')
+  return gulp.src('src/views/js/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist/views/js'));
 });
 
 // Minify Css in src
 gulp.task('minifySrcCss', function() {
-  gulp.src('src/css/*.css')
+  return gulp.src('src/css/*.css')
     .pipe(csso())
     .pipe(gulp.dest('dist/css'));
 });
 
 // Minify Css in src/views
 gulp.task('minifyViewsCss', function() {
-  gulp.src('src/views/css/*.css')
+  return gulp.src('src/views/css/*.css')
   .pipe(csso())
   .pipe(gulp.dest('dist/views/css'));
 });
 
 // Cleaning dist directory before redoing all tasks
 gulp.task('clean', function(){
-  del(['dist']);
+  return del(['dist']);
 });
 
 // Please run gulp clean before this task
